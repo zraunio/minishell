@@ -6,7 +6,7 @@
 /*   By: zraunio <zraunio@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/25 13:36:39 by zraunio           #+#    #+#             */
-/*   Updated: 2021/06/01 15:25:44 by zraunio          ###   ########.fr       */
+/*   Updated: 2021/06/02 17:32:45 by zraunio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ typedef struct s_shell
 	char	**env;
 	char	**tok;
 	char	**hist;
+	size_t	n_hist;
 	char	*hist_path;
 	int		hist_fd;
 	char	**hash_str;
@@ -49,6 +50,7 @@ typedef struct s_shell
 	char	**args;
 	char	**sh_args;
 	int		n;
+	int		logo;
 }				t_shell;
 
 /* -----KEYS----- */
@@ -56,14 +58,20 @@ int		print_key(int c);
 void	read_keypress(void);
 void	read_key(t_shell *shell, int c);
 void	do_arrows(t_shell *shell, int c);
-/* -----RAWMODE----- */
+/* -----LINE-EDIT----- */
 void	rawmode_start(void);
 void	kill_mode(const char *str);
+void	termcaps(t_shell *shell);
 /* -----ENVIRONMENT----- */
 char	*get_env(t_shell *shell, char *str);
 void	change_env(t_shell *shell, char *str, char *in);
 void	unset_env(char **env);
+void	save_env(t_shell *shell, char **env);
 /* -----HISTORY----- */
 void	fetch_history(t_shell *shell);
 void	get_history(t_shell *shell);
+/* -----SETUP TOOLS----- */
+void	set_signal(t_shell *shell);
+void	prompt(t_shell *shell);
+
 #endif

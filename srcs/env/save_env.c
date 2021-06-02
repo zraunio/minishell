@@ -1,27 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   save_env.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zraunio <zraunio@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/31 16:43:32 by zraunio           #+#    #+#             */
-/*   Updated: 2021/06/02 10:59:43 by zraunio          ###   ########.fr       */
+/*   Created: 2021/06/02 13:32:08 by zraunio           #+#    #+#             */
+/*   Updated: 2021/06/02 13:45:20 by zraunio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../shell.h"
+#include "../../shell.h"
 
-int	main(void)
+void	save_env(t_shell *shell, char **env)
 {
-	// t_shell	shell;
+	size_t	i;
 
-	// ft_memset(&shell, 0, sizeof(t_shell));
-	// rawmode_start();
-	srand(time(NULL));
-	int i = rand() % 4;
-	ft_printf("%d\n", i);
-	return (0);
+	i = 0;
+	while (env[i++])
+	{
+		shell->env[i] = ft_strdup(env[i]);
+		if (!shell->env[i])
+		{
+			ft_arr_free(shell->env);
+			exit (EXIT_FAILURE);
+		}
+	}
 }
-
-//gcc -Wall -Wextra -Werror srcs/base/*.c -L./libft -lft -o test

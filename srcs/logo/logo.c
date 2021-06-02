@@ -6,7 +6,7 @@
 /*   By: zraunio <zraunio@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/01 15:29:23 by zraunio           #+#    #+#             */
-/*   Updated: 2021/06/01 15:53:05 by zraunio          ###   ########.fr       */
+/*   Updated: 2021/06/02 15:02:47 by zraunio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,24 +14,22 @@
 
 static void	logo3(void)
 {
-	ft_putendl("                    88               88             88         \
-	              88  88  ");
-	ft_putendl("                    ""               ""             88         \
-	              88  88  ");
-	ft_putendl("                                                    88         \
-	              88  88  ");
-	ft_putendl("88,dPYba,,adPYba,   88  8b,dPPYba,   88  ,adPPYba,  88,dPPYba, \
-	   ,adPPYba,  88  88  ");
-	ft_putendl("88P'   \"88\"    \"8a  88  88P'   `\"8a  88  I8[    \"\"  88P' \
-	   \"8a  a8P_____88  88  88  ");
-	ft_putendl("88      88      88  88  88       88  88   `\"Y8ba,   88       8\
-	8  8PP\"\"\"\"\"\"\"  88  88  ");
-	ft_putendl("88      88      88  88  88       88  88  aa    ]8I  88       88\
-	  \"8b,   ,aa  88  88  ");
-	ft_putendl("88      88      88  88  88       88  88  `\"YbbdP\"'  88       \
-	88   `\"Ybbd8\"'  88  88 ");
+	ft_putendl("                   o8o               o8o           oooo       \
+           oooo  oooo");
+	ft_putendl("                   `\"'               `\"'           `888        \
+          `888  `888");
+	ft_putendl("ooo. .oo.  .oo.   oooo  ooo. .oo.   oooo   .oooo.o  888 .oo.   \
+ .ooooo.   888   888");
+	ft_putendl("`888P\"Y88bP\"Y88b  `888  `888P\"Y88b  `888  d88(  \"8  888P\"Y88b  \
+d88' `88b  888   888");
+	ft_putendl(" 888   888   888   888   888   888   888  `\"Y88b.   888   888  \
+888ooo888  888   888");
+	ft_putendl(" 888   888   888   888   888   888   888  o.  )88b  888   888  \
+888    .o  888   888");
+	ft_putendl("o888o o888o o888o o888o o888o o888o o888o 8\"\"888P' o888o o888o \
+`Y8bod8P' o888o o888o");
 	ft_putendl("");
-	ft_putendl("                              ~ zraunio");
+	ft_putendl("									~ zraunio");
 }
 
 static void	logo2(void)
@@ -47,30 +45,28 @@ static void	logo2(void)
 
 static void	logo1(void)
 {
-	ft_putendl("      ___                    ___                    ___       \
-	                   ");
-	ft_putendl("     /\\  \\                  /\\  \\                  /\\  \\ \
-	                  ___   ");
-	ft_putendl("    /::\\  \\                /::\\  \\                /::\\  \\\
-	                 /\\  \\  ");
-	ft_putendl("   /:/\\:\\  \\              /:/\\:\\  \\              /:/\\:\\ \
-	 \\                \\:\\  \\ ");
-	ft_putendl("  /::\\~\\:\\  \\            /:/  \\:\\  \\            /::\\~\\:\
-	\\  \\     \\          /::\\__\\");
-	ft_putendl(" /:/\\:\\ \\:\\__\\          /:/__/ \\:\\__\\          /:/\\:\\ \
-	\\:\\__\\           __/:/\\/__/");
-	ft_putendl(" \\/_|::\\/:/  /          \\:\\  \\ /:/  /          \\/_|::\\/:/ \
-	 /          /\\/:/  /   ");
-	ft_putendl("    |:|::/  /            \\:\\  /:/  /              |:|::/  /    \
-	       \\::/__/    ");
-	ft_putendl("    |:|\\/__/              \\:\\/:/  /               |:|\\/__/   \
-	          \\:\\__\\    ");
-	ft_putendl("    |:|  |                 \\::/  /                |:|  |        \
-	        \\/__/    ");
-	ft_putendl("     \\|__|                  \\/__/                  \\|__|   ");
+	ft_putendl(" ____        _____       ____        ______");
+	ft_putendl("/\\  _`\\     /\\  __`\\    /\\  _`\\     /\\__  _\\");
+	ft_putendl("\\ \\ \\L\\ \\   \\ \\ \\/\\ \\   \\ \\ \\L\\ \\   \\/_/\\ \\/");
+	ft_putendl(" \\ \\ ,  /    \\ \\ \\ \\ \\   \\ \\ ,  /      \\ \\ \\");
+	ft_putendl("  \\ \\ \\ \\     \\ \\ \\_\\ \\   \\ \\ \\ \\       \\_\\ \\__ ");
+	ft_putendl("   \\ \\_\\ \\_\\   \\ \\_____\\   \\ \\_\\ \\_\\    /\\_____\\");
+	 ft_putendl("    \\/_/\\/ /    \\/_____/    \\/_/\\/ /    \\/_____/");
+	ft_putchar('\n');
+	ft_putendl("				~ minishell project");
 }
 
 void	set_logo(t_shell *shell)
 {
-
+	srand(time(NULL));
+	shell->logo = rand() % 4;
+	if (shell->logo == 0)
+		return ;
+	if (shell->logo == 1)
+		logo1();
+	else if (shell->logo == 2)
+		logo2();
+	else if (shell->logo == 3)
+		logo3();
 }
+

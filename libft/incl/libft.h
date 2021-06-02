@@ -6,7 +6,7 @@
 /*   By: zraunio <zraunio@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/04 13:01:21 by zraunio           #+#    #+#             */
-/*   Updated: 2021/05/18 17:16:09 by zraunio          ###   ########.fr       */
+/*   Updated: 2021/06/02 16:04:40 by zraunio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,6 +116,7 @@ void				ft_arr_free(char **arr);
 */
 int					get_next_line(const int fd, char **line);
 int					ft_printf(const char *format, ...);
+int					print_fd(int fd, const char *format, ...);
 void				ft_putstr(char const *s);
 void				ft_putstr_fd(char const *s, int fd);
 void				ft_putnbr(int nb);
