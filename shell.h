@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   shell.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zraunio <zraunio@student.42.fr>            +#+  +:+       +#+        */
+/*   By: zraunio <zraunio@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/25 13:36:39 by zraunio           #+#    #+#             */
-/*   Updated: 2021/06/02 17:32:45 by zraunio          ###   ########.fr       */
+/*   Updated: 2021/06/04 11:09:19 by zraunio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,11 +36,27 @@
 # define H_SIZE 2900
 # define MAX_BUFF 4096
 
+# define TOKEN_ID 0x1
+# define TOKEN_EQUALS 0x2
+# define TOKEN_STRING 0x4
+# define TOKEN_SEMI 0x8
+# define TOKEN_COMMA 0x10
+# define TOKEN_EOF 0x20
+
+typedef struct	s_lexer
+{
+	char	c;
+	size_t	n;
+	char	*contents;
+}				t_lexer;
+
 typedef struct s_shell
 {
 	char	**env;
 	char	**tok;
 	char	**hist;
+	char	*tok;
+	t_lexer	*lex;
 	size_t	n_hist;
 	char	*hist_path;
 	int		hist_fd;
@@ -73,5 +89,7 @@ void	get_history(t_shell *shell);
 /* -----SETUP TOOLS----- */
 void	set_signal(t_shell *shell);
 void	prompt(t_shell *shell);
-
+/* -----LEXER TOOLS----- */
+void	lexical(t_shell *shell);
+char	*fetch_token(t_lexer *lex);
 #endif
