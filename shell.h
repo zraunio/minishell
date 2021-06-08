@@ -6,7 +6,7 @@
 /*   By: zraunio <zraunio@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/25 13:36:39 by zraunio           #+#    #+#             */
-/*   Updated: 2021/06/04 11:09:19 by zraunio          ###   ########.fr       */
+/*   Updated: 2021/06/08 14:36:48 by zraunio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,4 +92,7 @@ void	prompt(t_shell *shell);
 /* -----LEXER TOOLS----- */
 void	lexical(t_shell *shell);
 char	*fetch_token(t_lexer *lex);
+void	advance_lexer(t_lexer *lex);
+char	*advance_with_token(t_lexer *lex, char *token);
+char	*assign_token(int type, char *str);
 #endif
