@@ -88,7 +88,8 @@ _PRINT_SRC = print/ft_putchar_fd.c \
 _BIT_SRC = bits/ft_oradd_bit.c \
 		bits/ft_orfill_bit.c
 
-_STR_SRC = str/ft_strcat.c \
+_STR_SRC = str/ft_charstr.c \
+		str/ft_strcat.c \
 		str/ft_strchr.c \
 		str/ft_strclr.c \
 		str/ft_strcmp.c \

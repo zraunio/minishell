@@ -6,13 +6,13 @@
 /*   By: zraunio <zraunio@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/04 11:07:59 by zraunio           #+#    #+#             */
-/*   Updated: 2021/06/08 14:38:00 by zraunio          ###   ########.fr       */
+/*   Updated: 2021/06/08 15:16:38 by zraunio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../shell.h"
 
-char	*fetch_string(t_lexer *lex)
+static char	*fetch_string(t_lexer *lex)
 {
 	char	*token;
 	char	*temp;
@@ -24,16 +24,17 @@ char	*fetch_string(t_lexer *lex)
 	while (lex->c != '"')
 	{
 		//realloc &token
-		//temp = char as string
+		temp = ft_charstr(lex->c);
 		ft_strcat(token, temp);
 		advance_lexer(lex);
 		free(temp);
 	}
 	advance_lexer(lex);
-	return (); //initialise token (TOKEN STRING, token)
+	return (assign_token(TOKEN_STRING, token));
 }
+//this doesn't make much sense. just charstr token to hold the c
 
-char	*fetch_id(t_lexer *lex)
+static char	*fetch_id(t_lexer *lex)
 {
 	char	*token;
 	char	*temp;
@@ -44,12 +45,12 @@ char	*fetch_id(t_lexer *lex)
 	while (ft_isalnum(lex->c) || lex->c == DASH || lex->c == DOT || lex->c == DOLLAR || lex->c == TILDE) //more??
 	{
 		//realloc &token
-		//temp = char as string
+		temp = ft_charstr(lex->c);
 		ft_strcat(token, temp);
 		advance_lexer(lex);
 		free(temp);
 	}
-	return (assign_token(TOKEN_ID, token)); //initialise token (TOKEN ID, token)
+	return (assign_token(TOKEN_ID, token));
 }
 
 char	*fetch_token(t_lexer *lex)
@@ -66,7 +67,8 @@ char	*fetch_token(t_lexer *lex)
 		if (lex->c == '"')
 			fetch_string(lex);
 		if (lex->c == ';')
-			return (advance_with_token(lex, assign_token(TOKEN_SEMI, )));//advance token but (TOKEN_SEMI from token enum), current char as string
+			return (advance_with_token(lex, assign_token(TOKEN_SEMI, ft_charstr(lex->c))));
+//advance token but (TOKEN_SEMI from token enum), current char as string
 	}
 	return (assign_token(TOKEN_EOF, "\0"));
 }

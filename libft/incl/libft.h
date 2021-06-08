@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zraunio <zraunio@student.42.fr>            +#+  +:+       +#+        */
+/*   By: zraunio <zraunio@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/04 13:01:21 by zraunio           #+#    #+#             */
-/*   Updated: 2021/06/02 16:04:40 by zraunio          ###   ########.fr       */
+/*   Updated: 2021/06/08 15:08:30 by zraunio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,6 +132,7 @@ void				ft_print_bits(size_t nb, size_t size);
 /*
 ** string manipulation
 */
+char				*ft_charstr(char c);
 char				*ft_strtrim(char const *s);
 char				*ft_strctrim(char const *s, char c);
 char				*ft_strtrim_top(const char *s, char c);
