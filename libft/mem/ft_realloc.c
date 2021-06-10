@@ -3,34 +3,36 @@
 /*                                                        :::      ::::::::   */
 /*   ft_realloc.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zraunio <zraunio@student.42.fr>            +#+  +:+       +#+        */
+/*   By: zraunio <zraunio@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/20 08:54:50 by zraunio           #+#    #+#             */
-/*   Updated: 2021/05/18 15:00:20 by zraunio          ###   ########.fr       */
+/*   Updated: 2021/06/10 10:34:14 by zraunio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incl/libft.h"
 
-void	*ft_realloc(void *ptr, size_t size)
+void	*ft_realloc(void *ptr, size_t o_size, size_t n_size)
 {
 	void	*dest;
+	size_t	i;
 
-	if (ptr && size == 0)
+	if (ptr && n_size == 0)
 	{
-		dest = (void *)malloc(1);
-		if (!dest)
-			return (NULL);
-		ft_memdel(ptr);
-		return (dest);
-	}
-	dest = (void *)malloc(size);
-	if (!dest)
+		free(ptr);
 		return (NULL);
-	if (ptr)
+	}
+	dest = (void *)malloc(n_size);
+	if (dest && ptr)
 	{
-		ft_memcpy(dest, ptr, size);
-		ft_memdel(ptr);
+		if (o_size > n_size)
+			i = n_size;
+		else
+			i = o_size;
+		ft_memcpy(dest, ptr, i);
+		if (n_size > o_size)
+			ft_memset((void *)(&((char*)dest)[o_size]), 0, n_size - o_size);
+		free(ptr);
 	}
 	return ((void *)dest);
 }

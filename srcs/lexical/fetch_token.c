@@ -6,7 +6,7 @@
 /*   By: zraunio <zraunio@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/04 11:07:59 by zraunio           #+#    #+#             */
-/*   Updated: 2021/06/08 15:16:38 by zraunio          ###   ########.fr       */
+/*   Updated: 2021/06/10 10:37:29 by zraunio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static char	*fetch_string(t_lexer *lex)
 		return (NULL);
 	while (lex->c != '"')
 	{
-		//realloc &token
+		token = ft_realloc((void *)token, ft_strlen(token), ft_strlen(token) + 1);
 		temp = ft_charstr(lex->c);
 		ft_strcat(token, temp);
 		advance_lexer(lex);
@@ -32,7 +32,6 @@ static char	*fetch_string(t_lexer *lex)
 	advance_lexer(lex);
 	return (assign_token(TOKEN_STRING, token));
 }
-//this doesn't make much sense. just charstr token to hold the c
 
 static char	*fetch_id(t_lexer *lex)
 {
@@ -44,7 +43,7 @@ static char	*fetch_id(t_lexer *lex)
 		return (NULL);
 	while (ft_isalnum(lex->c) || lex->c == DASH || lex->c == DOT || lex->c == DOLLAR || lex->c == TILDE) //more??
 	{
-		//realloc &token
+		token = ft_realloc((void *)token, ft_strlen(token), ft_strlen(token) + 1);
 		temp = ft_charstr(lex->c);
 		ft_strcat(token, temp);
 		advance_lexer(lex);
@@ -67,8 +66,10 @@ char	*fetch_token(t_lexer *lex)
 		if (lex->c == '"')
 			fetch_string(lex);
 		if (lex->c == ';')
+		{
 			return (advance_with_token(lex, assign_token(TOKEN_SEMI, ft_charstr(lex->c))));
-//advance token but (TOKEN_SEMI from token enum), current char as string
+			break ;
+		}
 	}
 	return (assign_token(TOKEN_EOF, "\0"));
 }

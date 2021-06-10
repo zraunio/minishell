@@ -156,12 +156,12 @@ clean:
 	@find . -type f -name '*.o' -print -delete -o -name '#*#' -print -delete
 	@find . -type f -name '*~' -print -delete -o -name '#*#' -print -delete
 	@find . -type f -name '.DS_Store' -print -delete
-	@echo "deleted some stuff"
+	@echo "\\n\033[32;1mLIBFT OBJ STUFFS DELETED\033[0m \\n"
 
 fclean: clean
 	@rm -f $(NAME)
 	@rm -rf $(OBJ_DIR)
-	@echo "deleted rest of the stuff"
+	@echo "\\n\033[32;1mLIBFT REST OF STUFFS DELETED\033[0m \\n"
 
 re: fclean all
 
